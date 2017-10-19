@@ -82,3 +82,5 @@ au Syntax * RainbowParenthesesLoadBraces
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  guibg=red   ctermbg=3
 hi IndentGuidesEven guibg=green ctermbg=4
+
+let g:airline_powerline_fonts = 1 
