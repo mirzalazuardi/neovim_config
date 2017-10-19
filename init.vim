@@ -46,6 +46,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tomasr/molokai'
 Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim' 
+Plug 'mkitt/tabline.vim'
 call plug#end()
 
 colorscheme jellybeans
@@ -83,4 +84,5 @@ let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  guibg=red   ctermbg=3
 hi IndentGuidesEven guibg=green ctermbg=4
 
+"powerline symbol
 let g:airline_powerline_fonts = 1 
