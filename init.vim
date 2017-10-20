@@ -13,7 +13,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
 Plug 'plasticboy/vim-markdown'
-"Plug 'powerline/powerline' 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'godlygeek/tabular' 
@@ -26,7 +25,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } 
 Plug 'kien/ctrlp.vim'
-Plug 'junegunn/fzf'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-rails' 
 Plug 'pangloss/vim-javascript'
@@ -43,13 +42,20 @@ Plug 'rking/ag.vim'
 Plug 'elzr/vim-json'
 Plug 'aquach/vim-http-client' 
 Plug 'tpope/vim-repeat'
+Plug 'mkitt/tabline.vim' 
+
+"color
 Plug 'tomasr/molokai'
 Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim' 
-Plug 'mkitt/tabline.vim'
+Plug 'mhartington/oceanic-next'
+Plug 'icymind/neosolarized'
+Plug 'maxst/flatcolor' 
 call plug#end()
 
-colorscheme jellybeans
+"set background=dark
+set termguicolors
+colorscheme OceanicNext
 
 "deoplete conf
 let g:deoplete#enable_at_startup = 1
@@ -86,3 +92,24 @@ hi IndentGuidesEven guibg=green ctermbg=4
 
 "powerline symbol
 let g:airline_powerline_fonts = 1 
+
+"fzf conf
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o) 
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line) 
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction 
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
