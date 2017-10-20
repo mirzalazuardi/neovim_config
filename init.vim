@@ -43,6 +43,7 @@ Plug 'elzr/vim-json'
 Plug 'aquach/vim-http-client' 
 Plug 'tpope/vim-repeat'
 Plug 'mkitt/tabline.vim' 
+Plug 'freitass/todo.txt-vim'
 
 "color
 Plug 'tomasr/molokai'
