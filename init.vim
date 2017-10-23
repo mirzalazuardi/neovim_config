@@ -44,6 +44,10 @@ Plug 'aquach/vim-http-client'
 Plug 'tpope/vim-repeat'
 Plug 'mkitt/tabline.vim' 
 Plug 'freitass/todo.txt-vim'
+Plug 'joshcheek/seeing_is_believing'
+Plug 't9md/vim-ruby-xmpfilter' 
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'thoughtbot/vim-rspec' 
 
 "color
 Plug 'tomasr/molokai'
@@ -114,3 +118,32 @@ function! s:fzf_statusline()
   setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
 endfunction 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+"seeing_is_believing conf
+" Annotate every line
+nmap <leader>b :%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
+" Annotate marked lines
+nmap <leader>n :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
+" Remove annotations
+nmap <leader>c :%.!seeing_is_believing --clean<CR>;
+" Mark the current line for annotation
+nmap <leader>m A # => <Esc>
+" Mark the highlighted lines for annotation
+vmap <leader>m :norm A # => <Esc>
+
+"rspec conf 
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR> 
+
+"ruby refactoring conf
+nnoremap <leader>rap  :RAddParameter<cr>
+nnoremap <leader>rcpc :RConvertPostConditional<cr>
+nnoremap <leader>rel  :RExtractLet<cr>
+vnoremap <leader>rec  :RExtractConstant<cr>
+vnoremap <leader>relv :RExtractLocalVariable<cr>
+nnoremap <leader>rit  :RInlineTemp<cr>
+vnoremap <leader>rrlv :RRenameLocalVariable<cr>
+vnoremap <leader>rriv :RRenameInstanceVariable<cr>
+vnoremap <leader>rem  :RExtractMethod<cr>
