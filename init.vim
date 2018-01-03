@@ -49,6 +49,12 @@ call plug#begin('~/.vim/plugged')
   Plug 't9md/vim-ruby-xmpfilter' 
   Plug 'ecomba/vim-ruby-refactoring'
   Plug 'thoughtbot/vim-rspec' 
+  Plug 'vim-scripts/dbext.vim'
+  Plug 'vim-scripts/SQLUtilities'
+  Plug 'gregsexton/gitv', {'on': ['Gitv']}
+  Plug 'c9s/helper.vim'
+  Plug 'c9s/treemenu.vim'
+  Plug 'c9s/hypergit.vim'
 
   "color
   Plug 'tomasr/molokai'
@@ -157,3 +163,18 @@ endfunction
 function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
 endfunction
+
+nmap <C-f> :Files<CR>
+nmap <C-b> :Buffers<CR>
+nmap <C-g> :GFiles?<CR>
+nmap <C-h><C-h> :History<CR>
+nmap <C-m><C-m> :Maps<CR>
+nmap <C-c><C-c> :Commands<CR>
+nmap <C-s><C-s> :Snippets<CR>
+nmap <C-t> :tabnew<CR>
+nmap <C-t><C-c> :tabclose<CR>
+nmap <C-g><C-v> :Gitv<CR>
+nmap <C-g><C-d> :Gdiff<CR>
+:command Q q
+:command W w
+:command J %!python -m json.tool
