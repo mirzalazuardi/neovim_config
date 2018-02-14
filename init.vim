@@ -55,6 +55,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'c9s/helper.vim'
   Plug 'c9s/treemenu.vim'
   Plug 'c9s/hypergit.vim'
+  Plug 'ngmy/vim-rubocop' 
+  Plug 'myusuf3/numbers.vim' 
 
   "color
   Plug 'tomasr/molokai'
