@@ -8,7 +8,7 @@ set shiftwidth=2
 " On pressing tab, insert 2 spaces
 set expandtab
 
-"vimplug conf 
+"vimplug conf
 call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'plasticboy/vim-markdown'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'godlygeek/tabular' 
+  Plug 'godlygeek/tabular'
   Plug 'majutsushi/tagbar'
   Plug 'chiel92/vim-autoformat'
   Plug 'tpope/vim-surround'
@@ -24,11 +24,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } 
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   Plug 'kien/ctrlp.vim'
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
   Plug 'mattn/emmet-vim'
-  Plug 'tpope/vim-rails' 
+  Plug 'tpope/vim-rails'
   Plug 'pangloss/vim-javascript'
   Plug 'mxw/vim-jsx'
   Plug 'kien/rainbow_parentheses.vim'
@@ -38,33 +38,34 @@ call plug#begin('~/.vim/plugged')
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'yggdroot/indentline'
   Plug 'scrooloose/nerdcommenter'
-  Plug 'mattesgroeger/vim-bookmarks' 
+  Plug 'mattesgroeger/vim-bookmarks'
   Plug 'rking/ag.vim'
   Plug 'elzr/vim-json'
-  Plug 'aquach/vim-http-client' 
+  Plug 'aquach/vim-http-client'
   Plug 'tpope/vim-repeat'
-  Plug 'mkitt/tabline.vim' 
+  Plug 'mkitt/tabline.vim'
   Plug 'freitass/todo.txt-vim'
   Plug 'joshcheek/seeing_is_believing'
-  Plug 't9md/vim-ruby-xmpfilter' 
+  Plug 't9md/vim-ruby-xmpfilter'
   Plug 'ecomba/vim-ruby-refactoring'
-  Plug 'thoughtbot/vim-rspec' 
+  Plug 'thoughtbot/vim-rspec'
   Plug 'vim-scripts/dbext.vim'
   Plug 'vim-scripts/SQLUtilities'
   Plug 'gregsexton/gitv', {'on': ['Gitv']}
   Plug 'c9s/helper.vim'
   Plug 'c9s/treemenu.vim'
   Plug 'c9s/hypergit.vim'
-  Plug 'ngmy/vim-rubocop' 
-  Plug 'myusuf3/numbers.vim' 
+  Plug 'ngmy/vim-rubocop'
+  Plug 'myusuf3/numbers.vim'
+  Plug 'ntpeters/vim-better-whitespace'
 
   "color
   Plug 'tomasr/molokai'
   Plug 'morhetz/gruvbox'
-  Plug 'nanotech/jellybeans.vim' 
+  Plug 'nanotech/jellybeans.vim'
   Plug 'mhartington/oceanic-next'
   Plug 'icymind/neosolarized'
-  Plug 'maxst/flatcolor' 
+  Plug 'maxst/flatcolor'
 call plug#end()
 
 "set background=dark
@@ -99,24 +100,24 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 "indent_guides conf
-"let g:indent_guides_enable_on_vim_startup = 1 
+"let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  guibg=red   ctermbg=3
 hi IndentGuidesEven guibg=green ctermbg=4
 
 "powerline symbol
-let g:airline_powerline_fonts = 1 
+let g:airline_powerline_fonts = 1
 
 "fzf conf
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o) 
+omap <leader><tab> <plug>(fzf-maps-o)
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line) 
+imap <c-x><c-l> <plug>(fzf-complete-line)
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 function! s:fzf_statusline()
@@ -125,7 +126,7 @@ function! s:fzf_statusline()
   highlight fzf2 ctermfg=23 ctermbg=251
   highlight fzf3 ctermfg=237 ctermbg=251
   setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction 
+endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 "seeing_is_believing conf
@@ -140,11 +141,11 @@ nmap <leader>m A # => <Esc>
 " Mark the highlighted lines for annotation
 vmap <leader>m :norm A # => <Esc>
 
-"rspec conf 
+"rspec conf
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR> 
+map <Leader>a :call RunAllSpecs()<CR>
 
 "ruby refactoring conf
 nnoremap <leader>rap  :RAddParameter<cr>
@@ -180,3 +181,4 @@ nmap <C-g><C-d> :Gdiff<CR>
 :command Q q
 :command W w
 :command J %!python -m json.tool
+autocmd BufEnter * EnableStripWhitespaceOnSave
