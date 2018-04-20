@@ -1,5 +1,9 @@
+" use gui tabs
+  set guioptions+=e
+set mouse=a
+set is
 set foldmethod=indent
-set number relativenumber
+"set number relativenumber
 filetype plugin indent on
 " show existing tab with 2 spaces width
 set tabstop=2
@@ -22,7 +26,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'altercation/vim-colors-solarized'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'SirVer/ultisnips'
+  Plug 'MarcWeber/vim-addon-mw-utils'
+  Plug 'tomtom/tlib_vim'
+  Plug 'garbas/vim-snipmate'
+  "Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   Plug 'kien/ctrlp.vim'
@@ -59,6 +66,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'myusuf3/numbers.vim'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'tmux-plugins/vim-tmux-focus-events'
+  Plug 'kien/tabman.vim'
 
   "color
   Plug 'tomasr/molokai'
@@ -174,21 +182,48 @@ function! RemoveAllNumber()
   echo "relative & absolute number hidden"
 endfunction
 
+function! ToggleNERDTreeFind()
+    if g:NERDTree.IsOpen()
+        execute ':NERDTreeClose'
+    else
+        execute ':NERDTreeFind'
+    endif
+endfunction
+
 nmap <C-f> :Files<CR>
 nmap <C-b> :Buffers<CR>
 nmap <C-g> :GFiles?<CR>
 nmap <C-h><C-h> :History<CR>
 nmap <C-m><C-m> :Maps<CR>
 nmap <C-c><C-c> :Commands<CR>
-nmap <C-s><C-s> :Snippets<CR>
+"nmap <C-s><C-s> :Snippets<CR>
 nmap <C-t> :tabnew<CR>
 nmap <C-t><C-c> :tabclose<CR>
 nmap <C-g><C-v> :Gitv<CR>
 nmap <C-g><C-d> :Gdiff<CR>
+nmap <leader>q :q<CR>
+nmap <leader>qb :bd<CR>
+nnoremap <leader>p :call ToggleNERDTreeFind()<CR>
 nnoremap <F2> :call RemoveAllNumber()<CR>
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
+"line movement
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
 :command Q q
 :command W w
 :command J %!python -m json.tool
 autocmd BufEnter * EnableStripWhitespaceOnSave
+let g:python_host_prog = '/usr/local/bin/python3'
+
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
+let g:tablineclosebutton=1
