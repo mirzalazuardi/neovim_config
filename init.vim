@@ -58,6 +58,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ngmy/vim-rubocop'
   Plug 'myusuf3/numbers.vim'
   Plug 'ntpeters/vim-better-whitespace'
+  Plug 'tmux-plugins/vim-tmux-focus-events'
 
   "color
   Plug 'tomasr/molokai'
@@ -167,6 +168,12 @@ function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
 endfunction
 
+function! RemoveAllNumber()
+  execute 'set nonumber'
+  execute 'set norelativenumber'
+  echo "relative & absolute number hidden"
+endfunction
+
 nmap <C-f> :Files<CR>
 nmap <C-b> :Buffers<CR>
 nmap <C-g> :GFiles?<CR>
@@ -178,6 +185,9 @@ nmap <C-t> :tabnew<CR>
 nmap <C-t><C-c> :tabclose<CR>
 nmap <C-g><C-v> :Gitv<CR>
 nmap <C-g><C-d> :Gdiff<CR>
+nnoremap <F2> :call RemoveAllNumber()<CR>
+nnoremap <F3> :NumbersToggle<CR>
+nnoremap <F4> :NumbersOnOff<CR>
 :command Q q
 :command W w
 :command J %!python -m json.tool
