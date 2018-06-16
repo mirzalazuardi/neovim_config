@@ -1,5 +1,5 @@
 " use gui tabs
-  set guioptions+=e
+set guioptions+=e
 set mouse=a
 set is
 set foldmethod=indent
@@ -67,14 +67,17 @@ call plug#begin('~/.vim/plugged')
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'tmux-plugins/vim-tmux-focus-events'
   Plug 'kien/tabman.vim'
+  Plug 'ervandew/supertab'
 
-  "color
+  "color & icon
   Plug 'tomasr/molokai'
   Plug 'morhetz/gruvbox'
   Plug 'nanotech/jellybeans.vim'
   Plug 'mhartington/oceanic-next'
   Plug 'icymind/neosolarized'
   Plug 'maxst/flatcolor'
+  Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 "set background=dark
@@ -217,9 +220,9 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-:command Q q
-:command W w
-:command J %!python -m json.tool
+":command Q q
+":command W w
+":command J %!python -m json.tool
 autocmd BufEnter * EnableStripWhitespaceOnSave
 let g:python_host_prog = '/usr/local/bin/python3'
 
@@ -228,3 +231,6 @@ hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 let g:tablineclosebutton=1
 let g:python_host_prog = "/usr/local/bin/python3"
+set encoding=UTF-8
+set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h11
+let g:airline_powerline_fonts = 1

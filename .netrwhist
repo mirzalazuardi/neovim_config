@@ -1,10 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/luckymeerza/rubydev/serious/DStest/DropsuiteTest'
-let g:netrw_dirhist_2='/Users/luckymeerza/.vim/bundle/vim-snippets'
-let g:netrw_dirhist_3='/Users/luckymeerza/.vim/bundle/vim-snippets/snippets'
-let g:netrw_dirhist_4='/Users/luckymeerza/.vim/bundle/vim-snippets/snippets/javascript'
-let g:netrw_dirhist_5='/Users/luckymeerza/railsdev/lab/wpacker_test'
-let g:netrw_dirhist_6='/Users/luckymeerza/.rvm/rubies/ruby-2.4.1'
-let g:netrw_dirhist_7='/Users/luckymeerza/Desktop'
-let g:netrw_dirhist_8='/Users/luckymeerza/.rvm/rubies/ruby-2.4.0'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/luckymeerza/phpdev/projects/bac'
+let g:netrw_dirhist_2='/usr/local/etc/nginx/sites-enabled'
+let g:netrw_dirhist_3='/Users/luckymeerza/.tmux'
+let g:netrw_dirhist_4='/Users/luckymeerza/Downloads'
+let g:netrw_dirhist_5='/Users/luckymeerza/railsdev/prj/sayabu/app/models'
+let g:netrw_dirhist_6='/Users/luckymeerza/railsdev/prj/new_envirologer/app/models/concerns'
