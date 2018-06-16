@@ -11,6 +11,7 @@ set tabstop=2
 set shiftwidth=2
 " On pressing tab, insert 2 spaces
 set expandtab
+set inccommand=nosplit
 
 "vimplug conf
 call plug#begin('~/.vim/plugged')
