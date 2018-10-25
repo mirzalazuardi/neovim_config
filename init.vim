@@ -5,11 +5,13 @@ set is
 set foldmethod=indent
 "set number relativenumber
 filetype plugin indent on
+syntax on
 " show existing tab with 2 spaces width
 set tabstop=2
 " when indenting with '>', use 2 spaces width
 set shiftwidth=2
 " On pressing tab, insert 2 spaces
+set softtabstop=2
 set expandtab
 set inccommand=nosplit
 
@@ -69,6 +71,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'tmux-plugins/vim-tmux-focus-events'
   Plug 'kien/tabman.vim'
   Plug 'ervandew/supertab'
+  Plug 'ledger/vim-ledger'
+  Plug 'tpope/vim-dispatch'
+  Plug 'jamessan/vim-gnupg'
 
   "color & icon
   Plug 'tomasr/molokai'
@@ -78,6 +83,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'icymind/neosolarized'
   Plug 'maxst/flatcolor'
   Plug 'ryanoasis/vim-devicons'
+  Plug 'metakirby5/codi.vim'
 
 call plug#end()
 
@@ -154,7 +160,12 @@ nmap <leader>m A # => <Esc>
 " Mark the highlighted lines for annotation
 vmap <leader>m :norm A # => <Esc>
 
+nmap <leader>il :IndentLinesToggle<CR>
+
 "rspec conf
+let g:rspec_runner = "os_x_iterm2"
+"let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
+"let g:rspec_command = "Dispatch rspec {spec}"
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
@@ -167,7 +178,7 @@ nnoremap <leader>rel  :RExtractLet<cr>
 vnoremap <leader>rec  :RExtractConstant<cr>
 vnoremap <leader>relv :RExtractLocalVariable<cr>
 nnoremap <leader>rit  :RInlineTemp<cr>
-vnoremap <leader>rrlv :RRenameLocalVariable<cr>
+"vnoremap <leader>rrlv :RRenameLocalVariable<cr>
 vnoremap <leader>rriv :RRenameInstanceVariable<cr>
 vnoremap <leader>rem  :RExtractMethod<cr>
 
@@ -192,6 +203,39 @@ function! ToggleNERDTreeFind()
     else
         execute ':NERDTreeFind'
     endif
+endfunction
+
+" Files + devicons
+function! Fzf_dev()
+  let l:fzf_files_options = '--preview "rougify {2..-1} | head -'.&lines.'"'
+
+  function! s:files()
+    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+    return s:prepend_icon(l:files)
+  endfunction
+
+  function! s:prepend_icon(candidates)
+    let l:result = []
+    for l:candidate in a:candidates
+      let l:filename = fnamemodify(l:candidate, ':p:t')
+      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+      call add(l:result, printf('%s %s', l:icon, l:candidate))
+    endfor
+
+    return l:result
+  endfunction
+
+  function! s:edit_file(item)
+    let l:pos = stridx(a:item, ' ')
+    let l:file_path = a:item[pos+1:-1]
+    execute 'silent e' l:file_path
+  endfunction
+
+  call fzf#run({
+        \ 'source': <sid>files(),
+        \ 'sink':   function('s:edit_file'),
+        \ 'options': '-m ' . l:fzf_files_options,
+        \ 'down':    '40%' })
 endfunction
 
 nmap <C-f> :Files<CR>
@@ -223,7 +267,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 ":command Q q
 ":command W w
-":command J %!python -m json.tool
+":command J %!python -m json.tool "ERROR
 autocmd BufEnter * EnableStripWhitespaceOnSave
 let g:python_host_prog = '/usr/local/bin/python3'
 
@@ -235,3 +279,30 @@ let g:python_host_prog = "/usr/local/bin/python3"
 set encoding=UTF-8
 set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h11
 let g:airline_powerline_fonts = 1
+
+"ledger conf
+au BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
+"Number of columns that will be used to display the foldtext. Set this when you think that the amount is too far off to the right.
+let g:ledger_maxwidth = 80
+"String that will be used to fill the space between account name and amount in the foldtext. Set this to get some kind of lines or visual aid.
+let g:ledger_fillstring = '    -'
+"If you want the account completion to be sorted by level of detail/depth instead of alphabetical, include the following line:
+let g:ledger_detailed_first = 1
+"By default vim will fold ledger transactions, leaving surrounding blank lines unfolded. You can use g:ledger_fold_blanks to hide blank lines following a transaction.
+let g:ledger_fold_blanks = 0
+
+" Set ultisnips triggers
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" gnupg
+let g:GPGUsePipes=0
+
+function! StartUp()
+    if 0 == argc()
+        NERDTree
+    end
+endfunction
+
+autocmd VimEnter * call StartUp()
