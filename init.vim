@@ -29,6 +29,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'altercation/vim-colors-solarized'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'zchee/deoplete-jedi'
   Plug 'MarcWeber/vim-addon-mw-utils'
   Plug 'tomtom/tlib_vim'
   "Plug 'garbas/vim-snipmate'
@@ -74,6 +75,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'ledger/vim-ledger'
   Plug 'tpope/vim-dispatch'
   Plug 'jamessan/vim-gnupg'
+  Plug 'aklt/plantuml-syntax'
+  Plug 'tpope/vim-unimpaired'
 
   "color & icon
   Plug 'tomasr/molokai'
@@ -86,6 +89,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'metakirby5/codi.vim'
 
 call plug#end()
+
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/opt/python3/bin/python3.5'
 
 "set background=dark
 set termguicolors
@@ -269,13 +275,11 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 ":command W w
 ":command J %!python -m json.tool "ERROR
 autocmd BufEnter * EnableStripWhitespaceOnSave
-let g:python_host_prog = '/usr/local/bin/python3'
 
 hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 let g:tablineclosebutton=1
-let g:python_host_prog = "/usr/local/bin/python3"
 set encoding=UTF-8
 set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h11
 let g:airline_powerline_fonts = 1
@@ -306,3 +310,22 @@ function! StartUp()
 endfunction
 
 autocmd VimEnter * call StartUp()
+
+let g:plantuml_executable_script = 'plantuml'
+
+" fugitive git bindings
+nnoremap <space>ga :Git add %:p<CR><CR>
+nnoremap <space>gs :Gstatus<CR>
+nnoremap <space>gc :Gcommit -v -q<CR>
+nnoremap <space>gt :Gcommit -v -q %:p<CR>
+nnoremap <space>gd :Gdiff<CR>
+nnoremap <space>ge :Gedit<CR>
+nnoremap <space>gr :Gread<CR>
+nnoremap <space>gw :Gwrite<CR><CR>
+nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <space>gp :Ggrep<Space>
+nnoremap <space>gm :Gmove<Space>
+nnoremap <space>gb :Git branch<Space>
+nnoremap <space>go :Git checkout<Space>
+nnoremap <space>gps :Dispatch! git push<CR>
+nnoremap <space>gpl :Dispatch! git pull<CR>
