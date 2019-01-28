@@ -77,6 +77,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'jamessan/vim-gnupg'
   Plug 'aklt/plantuml-syntax'
   Plug 'tpope/vim-unimpaired'
+  Plug 'tmux-plugins/vim-tmux-focus-events'
+  Plug 'ahw/vim-pbcopy'
 
   "color & icon
   Plug 'tomasr/molokai'
@@ -330,3 +332,5 @@ nnoremap <space>gbl :Gblame<CR>
 nnoremap <space>go :Git checkout<Space>
 nnoremap <space>gps :Dispatch! git push<CR>
 nnoremap <space>gpl :Dispatch! git pull<CR>
+
+let g:vim_pbcopy_local_cmd = "pbcopy"
