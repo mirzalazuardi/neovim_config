@@ -1,3 +1,5 @@
+" margin
+set cc=76
 " use gui tabs
 set guioptions+=e
 set mouse=a
@@ -92,8 +94,10 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
+let g:strip_whitespace_confirm = 0
+
 let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/opt/python3/bin/python3.5'
+let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
 
 "set background=dark
 set termguicolors
