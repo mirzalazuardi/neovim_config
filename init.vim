@@ -1,5 +1,5 @@
 " margin
-set cc=76
+set cc=77
 " use gui tabs
 set guioptions+=e
 set mouse=a
