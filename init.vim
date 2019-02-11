@@ -338,3 +338,14 @@ nnoremap <space>gps :Dispatch! git push<CR>
 nnoremap <space>gpl :Dispatch! git pull<CR>
 
 let g:vim_pbcopy_local_cmd = "pbcopy"
+
+" margin
+fun! ToggleCC()
+  if &cc == ''
+    set cc=77
+  else
+    set cc=
+  endif
+endfun
+
+nnoremap <leader>77 :call ToggleCC()<CR>
