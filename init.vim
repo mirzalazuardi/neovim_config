@@ -1,5 +1,3 @@
-" margin
-set cc=77
 " use gui tabs
 set guioptions+=e
 set mouse=a
@@ -7,6 +5,7 @@ set is
 set foldmethod=indent
 "set number relativenumber
 filetype plugin indent on
+let python_highlight_all=1
 syntax on
 " show existing tab with 2 spaces width
 set tabstop=2
@@ -81,6 +80,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-unimpaired'
   Plug 'tmux-plugins/vim-tmux-focus-events'
   Plug 'ahw/vim-pbcopy'
+  Plug 'junegunn/goyo.vim'
+  Plug 'nvie/vim-flake8' "syntax checking python
+  Plug 'jalvesaq/nvim-r'
+  Plug 'jmcantrell/vim-virtualenv'
+  Plug 'vim-scripts/indentpython.vim'
 
   "color & icon
   Plug 'tomasr/molokai'
