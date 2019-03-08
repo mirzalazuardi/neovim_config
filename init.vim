@@ -85,6 +85,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'jalvesaq/nvim-r'
   Plug 'jmcantrell/vim-virtualenv'
   Plug 'vim-scripts/indentpython.vim'
+  Plug 'wakatime/vim-wakatime'
 
   "color & icon
   Plug 'tomasr/molokai'
