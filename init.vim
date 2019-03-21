@@ -16,6 +16,11 @@ set softtabstop=2
 set expandtab
 set inccommand=nosplit
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 "vimplug conf
 call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'
@@ -86,6 +91,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'jmcantrell/vim-virtualenv'
   Plug 'vim-scripts/indentpython.vim'
   Plug 'wakatime/vim-wakatime'
+  Plug 'thaerkh/vim-workspace'
 
   "color & icon
   Plug 'tomasr/molokai'
@@ -314,13 +320,13 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " gnupg
 let g:GPGUsePipes=0
 
-function! StartUp()
-    if 0 == argc()
-        NERDTree
-    end
-endfunction
+"function! StartUp()
+    "if 0 == argc()
+        "NERDTree
+    "end
+"endfunction
 
-autocmd VimEnter * call StartUp()
+"autocmd VimEnter * call StartUp()
 
 let g:plantuml_executable_script = 'plantuml'
 
@@ -354,3 +360,6 @@ fun! ToggleCC()
 endfun
 
 nnoremap <leader>77 :call ToggleCC()<CR>
+
+let g:workspace_autocreate =1
+let g:workspace_session_name = 'Session.vim'
