@@ -353,13 +353,13 @@ let g:vim_pbcopy_local_cmd = "pbcopy"
 " margin
 fun! ToggleCC()
   if &cc == ''
-    set cc=77
+    set cc=80
   else
     set cc=
   endif
 endfun
 
-nnoremap <leader>77 :call ToggleCC()<CR>
+nnoremap <leader>80 :call ToggleCC()<CR>
 
 let g:workspace_autocreate =1
 let g:workspace_session_name = 'Session.vim'
