@@ -365,3 +365,7 @@ nnoremap <leader>80 :call ToggleCC()<CR>
 
 let g:workspace_autocreate =1
 let g:workspace_session_name = 'Session.vim'
+
+nmap <Leader><Leader>m <Plug>MarkSet
+xmap <unique> <Leader><Leader>m <Plug>MarkSet
+nmap <unique> <Leader><Leader>n <Plug>MarkClear
