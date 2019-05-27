@@ -102,10 +102,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'maxst/flatcolor'
   Plug 'ryanoasis/vim-devicons'
   Plug 'metakirby5/codi.vim'
+  Plug 'inkarkat/vim-mark'
+  Plug 'inkarkat/vim-ingo-library'
 
 call plug#end()
 
-let g:strip_whitespace_confirm = 0
+let g:strip_whitespace_confirm = 1
 
 let g:python_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
@@ -291,7 +293,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 ":command Q q
 ":command W w
 ":command J %!python -m json.tool "ERROR
-autocmd BufEnter * EnableStripWhitespaceOnSave
+"autocmd BufEnter * EnableStripWhitespaceOnSave
 
 hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
