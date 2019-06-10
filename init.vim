@@ -353,15 +353,17 @@ nnoremap <space>gpl :Dispatch! git pull<CR>
 let g:vim_pbcopy_local_cmd = "pbcopy"
 
 " margin
-fun! ToggleCC()
-  if &cc == ''
-    set cc=80
-  else
+fun! ToggleCC119()
     set cc=
-  endif
+    set cc=119
+endfun
+fun! ToggleCC80()
+    set cc=
+    set cc=80
 endfun
 
-nnoremap <leader>80 :call ToggleCC()<CR>
+nnoremap <leader>80 :call ToggleCC80()<CR>
+nnoremap <leader>119 :call ToggleCC119()<CR>
 
 let g:workspace_autocreate =1
 let g:workspace_session_name = 'Session.vim'
