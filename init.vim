@@ -79,6 +79,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'kien/tabman.vim'
   Plug 'ervandew/supertab'
   Plug 'ledger/vim-ledger'
+  Plug 'anekos/hledger-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'jamessan/vim-gnupg'
   Plug 'aklt/plantuml-syntax'
