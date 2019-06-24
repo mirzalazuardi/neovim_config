@@ -372,3 +372,9 @@ let g:workspace_session_name = 'Session.vim'
 nmap <Leader><Leader>m <Plug>MarkSet
 xmap <unique> <Leader><Leader>m <Plug>MarkSet
 nmap <unique> <Leader><Leader>n <Plug>MarkClear
+nmap <Leader><Leader>h :noh<CR>
+
+augroup git
+  au!
+  autocmd FileType git :setlocal nofoldenable
+augroup END
