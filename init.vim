@@ -293,7 +293,9 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 ":command Q q
 ":command W w
-":command J %!python -m json.tool "ERROR
+command! PrettyPrintJSON %!python -m json.tool
+command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
+command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
 "autocmd BufEnter * EnableStripWhitespaceOnSave
 
 hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
