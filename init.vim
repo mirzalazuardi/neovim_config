@@ -42,6 +42,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
   Plug 'kien/ctrlp.vim'
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
   Plug 'mattn/emmet-vim'
