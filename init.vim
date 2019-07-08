@@ -380,3 +380,4 @@ augroup git
   au!
   autocmd FileType git :setlocal nofoldenable
 augroup END
+ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
