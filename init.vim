@@ -94,6 +94,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/indentpython.vim'
   Plug 'wakatime/vim-wakatime'
   Plug 'thaerkh/vim-workspace'
+  "Plug 'tpope/vim-rvm'
+  if !has('nvim')
+    Plug 'rhysd/vim-healthcheck'
+  endif
 
   "color & icon
   Plug 'tomasr/molokai'
@@ -106,10 +110,15 @@ call plug#begin('~/.vim/plugged')
   Plug 'metakirby5/codi.vim'
   Plug 'inkarkat/vim-mark'
   Plug 'inkarkat/vim-ingo-library'
+  Plug 'vim-scripts/bufexplorer.zip'
+  Plug 'blueyed/vim-diminactive'
 
 call plug#end()
 
-let g:strip_whitespace_confirm = 1
+let g:better_whitespace_enabled=1 "highlight by default
+"let g:strip_whitespace_on_save=0 "save by default
+"let g:strip_whitespace_confirm=1
+"let g:strip_only_modified_lines=1
 
 let g:python_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
@@ -176,16 +185,18 @@ endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 "seeing_is_believing conf
+  autocmd FileType ruby nmap <buffer> <F5> <Plug>(seeing-is-believing-run)
+  autocmd FileType ruby imap <buffer> <F5> <Plug>(seeing-is-believing-run)
 " Annotate every line
 nmap <leader>b :%!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
 " Annotate marked lines
-nmap <leader>n :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
+nmap <leader>nn :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
 " Remove annotations
 nmap <leader>c :%.!seeing_is_believing --clean<CR>;
 " Mark the current line for annotation
-nmap <leader>m A # => <Esc>
+"nmap <leader>m A # => <Esc>
 " Mark the highlighted lines for annotation
-vmap <leader>m :norm A # => <Esc>
+"vmap <leader>m :norm A # => <Esc>
 
 nmap <leader>il :IndentLinesToggle<CR>
 
@@ -357,6 +368,10 @@ nnoremap <space>gpl :Dispatch! git pull<CR>
 let g:vim_pbcopy_local_cmd = "pbcopy"
 
 " margin
+fun! ToggleCC100()
+    set cc=
+    set cc=119
+endfun
 fun! ToggleCC119()
     set cc=
     set cc=119
@@ -368,13 +383,14 @@ endfun
 
 nnoremap <leader>80 :call ToggleCC80()<CR>
 nnoremap <leader>119 :call ToggleCC119()<CR>
+nnoremap <leader>100 :call ToggleCC100()<CR>
 
 let g:workspace_autocreate =1
 let g:workspace_session_name = 'Session.vim'
 
 nmap <Leader><Leader>m <Plug>MarkSet
-xmap <unique> <Leader><Leader>m <Plug>MarkSet
-nmap <unique> <Leader><Leader>n <Plug>MarkClear
+"xmap <unique> <Leader><Leader>m <Plug>MarkSet
+"nmap <unique> <Leader><Leader>n <Plug>MarkClear
 nmap <Leader><Leader>h :noh<CR>
 
 augroup git

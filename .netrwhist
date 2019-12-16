@@ -1,3 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/Users/luckymeerza/railsdev/forstok_repo/forstok/spec/fixtures/bukalapak/variants/variant.json'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/luckymeerza/railsdev/forstok_repo/user/app/models'
+let g:netrw_dirhist_2='/Users/luckymeerza/.rvm/rubies/ruby-2.4.2'
+let g:netrw_dirhist_3='/Users/luckymeerza/railsdev/prj/lc/app/views/dashboard/notifs'
