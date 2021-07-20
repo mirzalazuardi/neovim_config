@@ -127,7 +127,8 @@ let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
 
 "set background=dark
 set termguicolors
-colorscheme OceanicNext
+"colorscheme OceanicNext
+colorscheme jellybeans
 
 "deoplete conf
 "let g:deoplete#enable_at_startup = 1
