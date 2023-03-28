@@ -25,6 +25,11 @@ local opts = {
   bypass_session_save_file_types = nil
 }
 
+vim.cmd [[
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.ruby = ['rails']
+]]
+
 require('auto-session').setup(opts)
 
 require("indent_blankline").setup {
