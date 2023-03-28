@@ -20,10 +20,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
-set rtp+=~/.fzf
+set rtp+=/opt/homebrew/opt/fzf
 "vimplug conf
 call plug#begin('~/.vim/plugged')
-  "Plug 'ervandew/supertab'
+
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
   Plug 'scrooloose/syntastic'
@@ -123,7 +123,7 @@ let g:better_whitespace_enabled=1 "highlight by default
 "let g:strip_only_modified_lines=1
 
 let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
+let g:python3_host_prog = '~/.pyenv/shims/python3'
 
 "set background=dark
 set termguicolors
